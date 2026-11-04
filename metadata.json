@@ -1,0 +1,6 @@
+{
+  "name": "Shery Automotores",
+  "description": "Plataforma integral de gestión para Shery Automotores",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

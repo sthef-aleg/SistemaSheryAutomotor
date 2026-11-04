@@ -1,0 +1,75 @@
+{
+  "entities": {
+    "Vehicle": {
+      "title": "Vehiculo",
+      "description": "Vehículo en el inventario de Shery Automotores.",
+      "type": "object",
+      "properties": {
+        "vin": { "type": "string" },
+        "make": { "type": "string" },
+        "model": { "type": "string" },
+        "version": { "type": "string" },
+        "year": { "type": "number" },
+        "price": { "type": "number" },
+        "buyPrice": { "type": "number" },
+        "expenses": { "type": "number" },
+        "km": { "type": "number" },
+        "fuel": { "type": "string" },
+        "transmission": { "type": "string" },
+        "color": { "type": "string" },
+        "cylinder": { "type": "string" },
+        "status": { "type": "string", "enum": ["disponible", "reservado", "vendido", "en_preparacion", "no_disponible"] },
+        "published": { "type": "boolean" },
+        "location": { "type": "string" },
+        "images": { "type": "array" },
+        "description": { "type": "string" },
+        "features": { "type": "array" }
+      },
+      "required": ["vin", "make", "model", "year", "price", "status"]
+    },
+    "Client": {
+      "title": "Cliente",
+      "description": "Cliente del CRM comercial.",
+      "type": "object",
+      "properties": {
+        "name": { "type": "string" },
+        "phone": { "type": "string" },
+        "email": { "type": "string" },
+        "origin": { "type": "string" },
+        "status": { "type": "string" },
+        "assignedSellerId": { "type": "string" }
+      },
+      "required": ["name", "phone", "status"]
+    },
+    "ImportRequest": {
+      "title": "SolicitudImportacion",
+      "description": "Solicitud de importación por encargo.",
+      "type": "object",
+      "properties": {
+        "requestCode": { "type": "string" },
+        "clientName": { "type": "string" },
+        "clientPhone": { "type": "string" },
+        "desiredMake": { "type": "string" },
+        "desiredModel": { "type": "string" },
+        "budgetGs": { "type": "number" },
+        "stage": { "type": "number" },
+        "status": { "type": "string" }
+      },
+      "required": ["clientName", "clientPhone", "desiredMake", "desiredModel"]
+    }
+  },
+  "firestore": {
+    "/inventory/{vin}": {
+      "schema": "Vehicle",
+      "description": "Catálogo e inventario de vehículos."
+    },
+    "/clientes/{clientId}": {
+      "schema": "Client",
+      "description": "Base de datos de clientes CRM."
+    },
+    "/solicitudes_importacion/{requestId}": {
+      "schema": "ImportRequest",
+      "description": "Solicitudes de importación de vehículos."
+    }
+  }
+}

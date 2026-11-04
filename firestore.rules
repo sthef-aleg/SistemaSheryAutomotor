@@ -1,0 +1,35 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    match /{document=**} {
+      allow read, write: if false;
+    }
+    match /inventory/{id} {
+      allow read, write: if true;
+    }
+    match /clientes/{id} {
+      allow read, write: if true;
+    }
+    match /vendedores/{id} {
+      allow read, write: if true;
+    }
+    match /reservas/{id} {
+      allow read, write: if true;
+    }
+    match /ventas/{id} {
+      allow read, write: if true;
+    }
+    match /comisiones/{id} {
+      allow read, write: if true;
+    }
+    match /solicitudes_importacion/{id} {
+      allow read, write: if true;
+    }
+    match /auditoria/{id} {
+      allow read, write: if true;
+    }
+    match /configuracion_sistema/{id} {
+      allow read, write: if true;
+    }
+  }
+}
